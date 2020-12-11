@@ -1,6 +1,6 @@
 <!-- <%- include('./partials/header.ejs') %> -->
 <h1>Report Morning</h1>
-<% console.log(data?.date) %>
+
 <form method="POST">
     <input type="date" name="date" value="<%= passes ? today : (data?.date ?? today) %>" />
     <input type="number" name="sleepDuration" value="<%= passes ? '' : (data?.sleepDuration ?? '') %>" />
