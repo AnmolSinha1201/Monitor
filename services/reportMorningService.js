@@ -1,33 +1,7 @@
 import { executeQuery } from "../database/database.js";
-import { required, minNumber, numberBetween, isNumber, isDate, validate } from "../deps.js"
+import { required, minNumber, numberBetween, isNumber, isNumeric, isDate, validate } from "../deps.js"
 
-const getHello = async() => {
-	const res = await executeQuery("SELECT * FROM news");
-	if (res && res.rowCount > 0) {
-		return res.rowsOfObjects();
-	}
-
-	return [];
-}
-
-const getHelloSpecific = async(id) => {
-	const res = await executeQuery("SELECT * FROM news where id = $1", id);
-	if (res && res.rowCount > 0) {
-		return res.rowsOfObjects()[0];
-	}
-
-	return [];
-}
-
-const setHello = async(title, content) => {
-	await executeQuery("INSERT INTO news (title, content) VALUES ($1, $2);", title, content);
-}
-
-const deleteHello = async(id) => {
-	await executeQuery("delete from news where id = $1;", id);
-}
-
-export const addReport = async(data) => {
+export const addReport = async(data, userid) => {
 	const rules = {
 		date : [required, isDate],
 		sleepDuration : [required, isNumber, minNumber(0)],
@@ -37,8 +11,16 @@ export const addReport = async(data) => {
 
 	const [passes, errors] = await validate(data, rules);
 	if (!passes)
-		return errors;
+		return { passes : passes, errors : errors };
+		
+	const res = await executeQuery("SELECT * FROM morningReport WHERE userid=$1 AND date=$2", userid, data.date);
+	if (res && res.rowCount > 0)
+	{
+		await executeQuery("DELETE FROM morningReport WHERE userid=$1 AND date=$2", userid, data.date);
+	}
+
+	await executeQuery("INSERT INTO morningReport (userid, date, sleepDuration, sleepQuality, genericMood) VALUES ($1, $2, $3, $4, $5)"
+		, userid, data.date, data.sleepDuration, data.sleepQuality, data.genericMood);
+
+	return { passes : passes, errors : errors };
 }
-
-
-export { getHello, setHello, getHelloSpecific, deleteHello };

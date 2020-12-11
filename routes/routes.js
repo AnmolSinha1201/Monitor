@@ -1,6 +1,7 @@
 import { Router } from "../deps.js";
 import { hello } from "./controllers/helloController.js";
 import * as helloController from "./controllers/helloController.js";
+import * as morningReportController from "./controllers/morningReportController.js";
 import * as helloApi from "./apis/helloApi.js";
 import * as authController from "./controllers/authController.js";
 
@@ -13,8 +14,8 @@ router.post('/auth/register', authController.registerPOST);
 
 
 router.get('/', helloController.landing);
-router.get('/behavior/reporting/Morning', helloController.reportMorningGET);
-router.post('/behavior/reporting/Morning', helloController.reportMorningPOST);
+router.get('/behavior/reporting/Morning', morningReportController.reportMorningGET);
+router.post('/behavior/reporting/Morning', morningReportController.reportMorningPOST);
 router.get('/behavior/reporting/Evening', helloController.reportEveningGET);
 
 router.get('/api/news', helloApi.getHello);
