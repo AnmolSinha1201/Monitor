@@ -1,0 +1,14 @@
+<!-- <%- include('./partials/header.ejs') %> -->
+<h1>Register</h1>
+<form method="POST">
+    <input type="text" name="email" />
+    <input type="password" name="password" />
+    <input type="submit" value="Sumbit" />
+</form>
+
+<% if (success != undefined) { %>
+    <p>Invalid credentials</p>
+<% } %>
+
+
+<!-- <%- include('./partials/footer.ejs') %> -->

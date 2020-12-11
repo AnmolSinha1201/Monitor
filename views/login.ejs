@@ -1,0 +1,16 @@
+<!-- <%- include('./partials/header.ejs') %> -->
+<h1>Login</h1>
+<form method="POST">
+    <input type="text" name="email" />
+    <input type="password" name="password" />
+    <input type="submit" value="Sumbit" />
+</form>
+
+<% if (success != undefined) { %>
+    <p>Invalid credentials</p>
+<% } %>
+
+<form method="GET" action="/auth/register">
+    <input type="submit" value="Register" />
+</form>
+<!-- <%- include('./partials/footer.ejs') %> -->

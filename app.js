@@ -20,6 +20,7 @@ app.use(middleware.errorMiddleware);
 // app.use(middleware.paywallMiddleware);
 app.use(middleware.requestTimingMiddleware);
 app.use(middleware.serveStaticFilesMiddleware);
+app.use(middleware.authenticationMiddleware);
 
 
 app.use(router.routes());
