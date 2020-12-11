@@ -7,8 +7,9 @@ const router = new Router();
 
 // router.get('/', helloController.hello);
 router.get('/', helloController.landing);
-router.get('/behavior/reporting/Morning', helloController.reportMorning);
-router.get('/behavior/reporting/Evening', helloController.reportEvening);
+router.get('/behavior/reporting/Morning', helloController.reportMorningGET);
+router.post('/behavior/reporting/Morning', helloController.reportMorningPOST);
+router.get('/behavior/reporting/Evening', helloController.reportEveningGET);
 
 router.get('/api/news', helloApi.getHello);
 router.post('/api/news', helloApi.setHello);
