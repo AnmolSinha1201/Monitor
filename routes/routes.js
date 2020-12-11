@@ -5,8 +5,10 @@ import * as helloApi from "./apis/helloApi.js";
 
 const router = new Router();
 
-router.get('/', helloController.hello);
-router.get('/news/:id', helloController.helloSpecific);
+// router.get('/', helloController.hello);
+router.get('/', helloController.landing);
+router.get('/behavior/reporting/Morning', helloController.reportMorning);
+router.get('/behavior/reporting/Evening', helloController.reportEvening);
 
 router.get('/api/news', helloApi.getHello);
 router.post('/api/news', helloApi.setHello);
