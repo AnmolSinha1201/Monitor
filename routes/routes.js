@@ -1,6 +1,4 @@
 import { Router } from "../deps.js";
-import { hello } from "./controllers/helloController.js";
-import * as helloController from "./controllers/helloController.js";
 import * as landingController from "./controllers/landingController.js";
 import * as morningReportController from "./controllers/morningReportController.js";
 import * as eveningReportController from "./controllers/eveningReportController.js";
