@@ -1,0 +1,72 @@
+<!-- <%- include('./partials/header.ejs') %> -->
+
+<form method="POST">
+    <input type="week" name="week" value="<%= input.week %>" />
+    <input type="month" name="month" value="<%= input.month %>" />
+    <input type="submit" value="Search" />
+</form>
+
+<h1>Weekly Summary</h1>
+<% if (!weeklyDataFound) { %>
+    <p>No summary found for given week</p>
+<% } else { %>
+    <table>
+        <tr>
+            <td>Average Sleep Duration</td>
+            <td><%= weeklyData.avgSleepDuration %></td>
+        </tr>
+        <tr>
+            <td>Average Time spent on sports and exercise</td>
+            <td><%= weeklyData.avgSports %></td>
+        </tr>
+        <tr>
+            <td>Average time spent studying</td>
+            <td><%= weeklyData.avgStudy %></td>
+        </tr>
+        <tr>
+            <td>Average sleep quality</td>
+            <td><%= weeklyData.avgSleepQuality %></td>
+        </tr>
+        <tr>
+            <td>Average eating quality</td>
+            <td><%= weeklyData.avgEatingQuality %></td>
+        </tr>
+        <tr>
+            <td>Average Generic Mood</td>
+            <td><%= weeklyData.avgGenericMood %></td>
+        </tr>
+    </table>
+<% } %>
+
+<h1>Monthly Summary</h1>
+<% if (!monthlyDataFound) { %>
+    <p>No summary found for given month</p>
+<% } else { %>
+    <table>
+        <tr>
+            <td>Average Sleep Duration</td>
+            <td><%= monthlyData.avgSleepDuration %></td>
+        </tr>
+        <tr>
+            <td>Average Time spent on sports and exercise</td>
+            <td><%= monthlyData.avgSports %></td>
+        </tr>
+        <tr>
+            <td>Average time spent studying</td>
+            <td><%= monthlyData.avgStudy %></td>
+        </tr>
+        <tr>
+            <td>Average sleep quality</td>
+            <td><%= monthlyData.avgSleepQuality %></td>
+        </tr>
+        <tr>
+            <td>Average eating quality</td>
+            <td><%= monthlyData.avgEatingQuality %></td>
+        </tr>
+        <tr>
+            <td>Average Generic Mood</td>
+            <td><%= monthlyData.avgGenericMood %></td>
+        </tr>
+    </table>
+<% } %>
+<!-- <%- include('./partials/footer.ejs') %> -->

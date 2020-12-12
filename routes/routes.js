@@ -4,6 +4,7 @@ import * as morningReportController from "./controllers/morningReportController.
 import * as eveningReportController from "./controllers/eveningReportController.js";
 import * as helloApi from "./apis/helloApi.js";
 import * as authController from "./controllers/authController.js";
+import * as summaryController from "./controllers/summaryController.js";
 
 const router = new Router();
 
@@ -18,6 +19,9 @@ router.get('/behavior/reporting/Morning', morningReportController.reportMorningG
 router.post('/behavior/reporting/Morning', morningReportController.reportMorningPOST);
 router.get('/behavior/reporting/Evening', eveningReportController.reportEveningGET);
 router.post('/behavior/reporting/Evening', eveningReportController.reportEveningPOST);
+
+router.get('/behavior/summary', summaryController.summaryGET);
+router.post('/behavior/summary', summaryController.summaryPOST);
 
 router.get('/api/news', helloApi.getHello);
 router.post('/api/news', helloApi.setHello);
