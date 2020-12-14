@@ -23,7 +23,7 @@ export const loginPOST = async({render, request, response, session}) => {
 };
 
 export const registerGET = async({render, request}) => {
-	render('register.ejs', { errors : {} });
+	render('register.ejs', { errors : undefined, input: undefined });
 };
 
 export const registerPOST = async({render, request, response, session}) => {
@@ -39,6 +39,6 @@ export const registerPOST = async({render, request, response, session}) => {
 	if (result.passes)
 		response.redirect('/auth/login');
 	else
-		render('register.ejs', { errors : result.errors });
+		render('register.ejs', { errors : result.errors, input : { email : email } });
 };
 
