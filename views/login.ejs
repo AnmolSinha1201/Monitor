@@ -1,9 +1,15 @@
-<!-- <%- include('./partials/header.ejs') %> -->
+<%- include('./partials/header.ejs') %>
 <h1>Login</h1>
 <form method="POST">
-    <input type="text" name="email" />
-    <input type="password" name="password" />
-    <input type="submit" value="Sumbit" />
+    <div class="mb-3">
+        <label>Email address</label>
+        <input type="text"  name="email">
+    </div>
+    <div class="mb-3">
+        <label>Password</label>
+        <input type="password" name="password">
+    </div>
+    <button type="submit">Submit</button>
 </form>
 
 <% if (success != undefined) { %>
@@ -11,6 +17,6 @@
 <% } %>
 
 <form method="GET" action="/auth/register">
-    <input type="submit" value="Register" />
+    <button type="submit" class="btn btn-primary">Register</button>
 </form>
-<!-- <%- include('./partials/footer.ejs') %> -->
+<%- include('./partials/footer.ejs') %>
