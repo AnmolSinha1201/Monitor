@@ -1,0 +1,1 @@
+deno run --allow-net=:${PORT} --allow-env --unstable --allow-read --allow-write app.js ${PORT}
