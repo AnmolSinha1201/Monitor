@@ -1,8 +1,15 @@
 <%- include('./partials/header.ejs') %>
 
+<h1>Summary</h1>
 <form method="POST">
-    <input type="week" name="week" value="<%= input.week %>" />
-    <input type="month" name="month" value="<%= input.month %>" />
+    <div>
+        <label>Week number</label>
+        <input type="week" name="week" value="<%= input.week %>" />
+    </div>
+    <div>
+        <label>Month number</label>
+        <input type="month" name="month" value="<%= input.month %>" />
+    </div>
     <input type="submit" value="Search" />
 </form>
 
