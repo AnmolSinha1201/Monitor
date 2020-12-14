@@ -12,7 +12,7 @@ const errorMiddleware = async(context, next) => {
 export const authenticationMiddleware = async({ request, response, session }, next) => {
 	const userid = await session.get('userid');
 	
-	if (!userid && !request.url.pathname.startsWith('/auth') && !request.url.pathname.startsWith('/api'))
+	if (!userid && !request.url.pathname.startsWith('/auth') && !request.url.pathname.startsWith('/api') && request.url.pathname.startsWith == '/')
 		response.redirect('/auth/login');
 	else
 		await next();
