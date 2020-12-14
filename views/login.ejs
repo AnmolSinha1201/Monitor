@@ -1,15 +1,15 @@
 <%- include('./partials/header.ejs') %>
 <h1>Login</h1>
 <form method="POST">
-    <div class="mb-3">
+    <div>
         <label>Email address</label>
         <input type="text"  name="email">
     </div>
-    <div class="mb-3">
+    <div>
         <label>Password</label>
         <input type="password" name="password">
     </div>
-    <button type="submit">Submit</button>
+    <button type="submit"   >Submit</button>
 </form>
 
 <% if (success != undefined) { %>
