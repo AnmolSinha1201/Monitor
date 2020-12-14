@@ -8,7 +8,6 @@ export const summaryGET = async({render, request, session}) => {
 	const result1 = await summaryService.getWeeklySummary(userid, week.slice(-2));
 	const result2 = await summaryService.getMonthlySummary(userid, Number(month.slice(-2))); // month starts with index 0
 
-	console.log({ input : { week : week, month : month}, weeklyDataCount : result1.count, weeklyData : result1.data, monthlyDataCount : result2.count, monthlyData : result2.data });
 	render('summary.ejs',{ input : { week : week, month : month}, weeklyDataFound : result1.found, weeklyData : result1.data, monthlyDataFound : result2.found, monthlyData : result2.data });
 };
 

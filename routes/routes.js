@@ -5,6 +5,7 @@ import * as eveningReportController from "./controllers/eveningReportController.
 import * as helloApi from "./apis/helloApi.js";
 import * as authController from "./controllers/authController.js";
 import * as summaryController from "./controllers/summaryController.js";
+import * as summaryApi from "./apis/summaryApi.js";
 
 const router = new Router();
 
@@ -27,5 +28,8 @@ router.get('/api/news', helloApi.getHello);
 router.post('/api/news', helloApi.setHello);
 router.get('/api/news/:id', helloApi.getHelloSpecific);
 router.delete('/api/news/:id', helloApi.deleteHello);
+
+router.get('/api/summary', summaryApi.getSummaryForAll);
+router.get('/api/summary/:year/:month/:day', summaryApi.getSummaryForAllOnSpecificDay);
 
 export { router };
