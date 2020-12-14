@@ -2,7 +2,6 @@ import { Router } from "../deps.js";
 import * as landingController from "./controllers/landingController.js";
 import * as morningReportController from "./controllers/morningReportController.js";
 import * as eveningReportController from "./controllers/eveningReportController.js";
-import * as helloApi from "./apis/helloApi.js";
 import * as authController from "./controllers/authController.js";
 import * as summaryController from "./controllers/summaryController.js";
 import * as summaryApi from "./apis/summaryApi.js";
@@ -23,11 +22,6 @@ router.post('/behavior/reporting/Evening', eveningReportController.reportEvening
 
 router.get('/behavior/summary', summaryController.summaryGET);
 router.post('/behavior/summary', summaryController.summaryPOST);
-
-router.get('/api/news', helloApi.getHello);
-router.post('/api/news', helloApi.setHello);
-router.get('/api/news/:id', helloApi.getHelloSpecific);
-router.delete('/api/news/:id', helloApi.deleteHello);
 
 router.get('/api/summary', summaryApi.getSummaryForAll);
 router.get('/api/summary/:year/:month/:day', summaryApi.getSummaryForAllOnSpecificDay);
