@@ -42,3 +42,6 @@ export const registerPOST = async({render, request, response, session}) => {
 		render('register.ejs', { errors : result.errors, input : { email : email } });
 };
 
+export const logout = async({session}) => {
+    await session.set('userid', undefined);
+}

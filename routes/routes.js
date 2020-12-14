@@ -12,6 +12,7 @@ router.get('/auth/login', authController.loginGET);
 router.post('/auth/login', authController.loginPOST);
 router.get('/auth/register', authController.registerGET);
 router.post('/auth/register', authController.registerPOST);
+router.post('/auth/logout', authController.logout);
 
 
 router.get('/', landingController.landing);
