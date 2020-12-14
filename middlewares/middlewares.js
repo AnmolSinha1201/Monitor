@@ -28,11 +28,16 @@ const paywallMiddleware = async({ request, response, session }, next) => {
 		response.body = 'This content is only for paying users.'
 }
 
-const requestTimingMiddleware = async({ request }, next) => {
+const requestTimingMiddleware = async({ request , session}, next) => {
 	const start = Date.now();
 	await next();
 	const ms = Date.now() - start;
-	console.log(`${request.method} ${request.url.pathname} - ${ms} ms`);
+
+	const today = new Date();
+	const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+	const userid = await session.get('userid');
+
+	console.log(`User : ${userid ?? 'anonymous'} - ${time} - ${request.method} ${request.url.pathname} - ${ms} ms`);
 }
 
 const serveStaticFilesMiddleware = async(context, next) => {
