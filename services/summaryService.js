@@ -45,7 +45,7 @@ export const addFound = async(data) => {
 const MONTH_CASE = 0;
 const WEEK_CASE = 1;
 export const getSummaryForSpecificForPeriod = async(userid, count, CASE) => {
-    const res = await executeQuery("select AVG(mr.userid) as userid, AVG((mr.genericmood + er.genericmood) / 2.0) as avgGenericMood, avg(sleepduration) as avgSleepDuration, avg(sleepquality) as avgSleepQuality, avg(timesportsexercise) as avgSports, avg(timestudy) as avgStudy, avg(qualityeating) as avgEatingQuality from MorningReport mr full outer join EveningReport er on mr.userid = er.userid and mr.date = er.date where mr.userid = $1 and date_part($3, mr.date) = $2;"
+    const res = await executeQuery("select AVG(mr.userid) as userid, AVG((COALESCE(mr.genericmood, 0) + COALESCE(er.genericmood, 0)) / 2.0) as avgGenericMood, avg(sleepduration) as avgSleepDuration, avg(sleepquality) as avgSleepQuality, avg(timesportsexercise) as avgSports, avg(timestudy) as avgStudy, avg(qualityeating) as avgEatingQuality from MorningReport mr full outer join EveningReport er on mr.userid = er.userid and mr.date = er.date where mr.userid = $1 and date_part($3, mr.date) = $2;"
         , userid, count, CASE == MONTH_CASE ? 'month' : 'week');
     
 	if (res && res.rowCount > 0)
@@ -60,7 +60,7 @@ export const getSummaryForSpecificForPeriod = async(userid, count, CASE) => {
 
 
 export const getSummaryForAllFor7Days = async() => {
-    const res = await executeQuery("select AVG(mr.userid) as userid, AVG((mr.genericmood + er.genericmood) / 2.0) as avgGenericMood, avg(sleepduration) as avgSleepDuration, avg(sleepquality) as avgSleepQuality, avg(timesportsexercise) as avgSports, avg(timestudy) as avgStudy, avg(qualityeating) as avgEatingQuality from MorningReport mr full outer join EveningReport er on mr.userid = er.userid and mr.date = er.date where current_date - mr.date <= 7");
+    const res = await executeQuery("select AVG(mr.userid) as userid, AVG((COALESCE(mr.genericmood, 0) + COALESCE(er.genericmood, 0)) / 2.0) as avgGenericMood, avg(sleepduration) as avgSleepDuration, avg(sleepquality) as avgSleepQuality, avg(timesportsexercise) as avgSports, avg(timestudy) as avgStudy, avg(qualityeating) as avgEatingQuality from MorningReport mr full outer join EveningReport er on mr.userid = er.userid and mr.date = er.date where current_date - mr.date <= 7");
     
 	if (res && res.rowCount > 0)
     {
@@ -73,7 +73,7 @@ export const getSummaryForAllFor7Days = async() => {
 }
 
 export const getSummaryForAllForSpecificDay = async(date) => {
-    const res = await executeQuery("select AVG(mr.userid) as userid, AVG((mr.genericmood + er.genericmood) / 2.0) as avgGenericMood, avg(sleepduration) as avgSleepDuration, avg(sleepquality) as avgSleepQuality, avg(timesportsexercise) as avgSports, avg(timestudy) as avgStudy, avg(qualityeating) as avgEatingQuality from MorningReport mr full outer join EveningReport er on mr.userid = er.userid and mr.date = er.date where mr.date = $1", date);
+    const res = await executeQuery("select AVG(mr.userid) as userid, AVG((COALESCE(mr.genericmood, 0) + COALESCE(er.genericmood, 0)) / 2.0) as avgGenericMood, avg(sleepduration) as avgSleepDuration, avg(sleepquality) as avgSleepQuality, avg(timesportsexercise) as avgSports, avg(timestudy) as avgStudy, avg(qualityeating) as avgEatingQuality from MorningReport mr full outer join EveningReport er on mr.userid = er.userid and mr.date = er.date where mr.date = $1", date);
     
 	if (res && res.rowCount > 0)
     {
