@@ -1,12 +1,28 @@
 <%- include('./partials/header.ejs') %>
 <h1>Welcome</h1>
-        <form action="/behavior/reporting/Morning">
-            <input type="submit" value="Report Morning" />
-        </form>
-        <form action="/behavior/reporting/Evening">
-            <input type="submit" value="Report Evening" />
-        </form>
-        <form action="/behavior/summary">
-            <input type="submit" value="Summary" />
-        </form>
+<p>
+    This application is a portal to maintain one's well being by tracking various parameters like mood, sleep, eating habits etc.
+</p>
+
+<p>
+    Today's mood : <%= moodToday %>
+</p>
+<p>
+    Yesterday's mood : <%= moodYesterday %>
+</p>
+<% if (moodToday > moodYesterday) { %>
+    <h3>Things are looking bright today</h3>
+<% } else { %>
+    <h3>Things are looking gloomy today</h3>
+<% } %>
+
+<form action="/behavior/reporting/Morning">
+    <input type="submit" value="Report Morning" />
+</form>
+<form action="/behavior/reporting/Evening">
+    <input type="submit" value="Report Evening" />
+</form>
+<form action="/behavior/summary">
+    <input type="submit" value="Summary" />
+</form>
 <%- include('./partials/footer.ejs') %>
