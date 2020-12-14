@@ -1,7 +1,8 @@
 import * as reportMorningService from "../../services/reportMorningService.js";
 
-export const reportMorningGET = async({render}) => {
-	render('reportMorning.ejs', { passes : undefined, errors : undefined, data : undefined, today : new Date().toJSON().slice(0,10) });
+export const reportMorningGET = async({render, session}) => {
+	const userid = await session.get('userid');
+	render('reportMorning.ejs', { passes : undefined, errors : undefined, data : undefined, today : new Date().toJSON().slice(0,10), userid : userid });
 };
 
 export const reportMorningPOST = async({render, request, session}) => {
@@ -18,5 +19,5 @@ export const reportMorningPOST = async({render, request, session}) => {
 	
 
 	const { passes, errors } = await reportMorningService.addReport(data, userid);
-	render('reportMorning.ejs', { passes : passes, errors : errors, data : data, today : new Date().toJSON().slice(0,10) });
+	render('reportMorning.ejs', { passes : passes, errors : errors, data : data, today : new Date().toJSON().slice(0,10), userid : userid });
 };

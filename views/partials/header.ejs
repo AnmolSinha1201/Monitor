@@ -7,4 +7,39 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
 	</head>
 		<body>
+			<div class="navbar">
+				<div class="title"><h1>Monitor</h1></div>
+				<% if(userid) { %>
+					<form method="POST" action="/auth/logout">
+						<input type="submit" value="Logout" class="logoutButton">
+					</form>
+				<% } %>
+			</div>
+			<style>
+				.navbar {
+					width: 100vw;
+					height: 60px;
+					background-color: #333;
+					position: relative;
+					overflow: hidden;
+					color: white;
+				}
+
+				.logoutButton {
+					position: absolute;
+					top: 10px;
+					right: 30px;
+
+					margin-bottom: 0;
+				}
+
+				.title {
+					position: absolute;
+					left: 10px;
+				}
+
+				.container {
+					padding-top: 20px;
+				}
+			</style>
 			<div class="container">

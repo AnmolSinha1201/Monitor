@@ -1,7 +1,7 @@
 import * as authService from "../../services/authService.js";
 
 export const loginGET = async({render, request}) => {
-	render('login.ejs', { success : undefined });
+	render('login.ejs', { success : undefined, userid: undefined });
 };
 
 export const loginPOST = async({render, request, response, session}) => {
@@ -19,11 +19,11 @@ export const loginPOST = async({render, request, response, session}) => {
 		response.redirect('/');
 	}
 	else
-		render('login.ejs', { success : false });
+		render('login.ejs', { success : false, userid: undefined });
 };
 
 export const registerGET = async({render, request}) => {
-	render('register.ejs', { errors : undefined, input: undefined });
+	render('register.ejs', { errors : undefined, input: undefined, userid: undefined });
 };
 
 export const registerPOST = async({render, request, response, session}) => {
@@ -39,7 +39,7 @@ export const registerPOST = async({render, request, response, session}) => {
 	if (result.passes)
 		response.redirect('/auth/login');
 	else
-		render('register.ejs', { errors : result.errors, input : { email : email } });
+		render('register.ejs', { errors : result.errors, input : { email : email }, userid: undefined });
 };
 
 export const logout = async({session, response}) => {

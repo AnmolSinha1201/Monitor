@@ -8,7 +8,7 @@ export const summaryGET = async({render, request, session}) => {
 	const result1 = await summaryService.getWeeklySummary(userid, week.slice(-2));
 	const result2 = await summaryService.getMonthlySummary(userid, Number(month.slice(-2))); // month starts with index 0
 
-	render('summary.ejs',{ input : { week : week, month : month}, weeklyDataFound : result1.found, weeklyData : result1.data, monthlyDataFound : result2.found, monthlyData : result2.data });
+	render('summary.ejs',{ input : { week : week, month : month}, weeklyDataFound : result1.found, weeklyData : result1.data, monthlyDataFound : result2.found, monthlyData : result2.data, userid : userid });
 };
 
 export const summaryPOST = async({render, request, session}) => {
@@ -22,7 +22,7 @@ export const summaryPOST = async({render, request, session}) => {
 	const result1 = await summaryService.getWeeklySummary(userid, week.slice(-2));
 	const result2 = await summaryService.getMonthlySummary(userid, Number(month.slice(-2)));
 
-	render('summary.ejs', { input : { week : week, month : month}, weeklyDataFound : result1.found, weeklyData : result1.data, monthlyDataFound : result2.found, monthlyData : result2.data });
+	render('summary.ejs', { input : { week : week, month : month}, weeklyDataFound : result1.found, weeklyData : result1.data, monthlyDataFound : result2.found, monthlyData : result2.data, userid : userid });
 };
 
 //https://stackoverflow.com/questions/6117814/get-week-of-year-in-javascript-like-in-php
