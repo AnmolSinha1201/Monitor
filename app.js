@@ -25,8 +25,11 @@ app.use(middleware.authenticationMiddleware);
 
 app.use(router.routes());
 
-if (!Deno.env.get('TEST_ENVIRONMENT')) {
-  app.listen({ port: 7777 });
+let port = 7777;
+if (Deno.args.length > 0) {  
+  const lastArgument = Deno.args[Deno.args.length - 1];  
+  myPort = Number(lastArgument);    
 }
+app.listen({ port: port });
   
 export default app;
