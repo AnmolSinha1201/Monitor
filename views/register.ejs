@@ -6,9 +6,15 @@
     <input type="submit" value="Sumbit" />
 </form>
 
-<% if (success != undefined) { %>
-    <p>Invalid credentials</p>
-<% } %>
+<ul>
+    <% if (errors) { %>
+        <% Object.keys(errors).forEach((key) => { %>
+            <% Object.keys(errors[key]).forEach((innerKey) => { %>
+                <li><%= `${key} : ${errors[key][innerKey]}` %></li>
+            <% }) %>
+        <% }) %>
+    <% } %>
+</ul>
 
 
 <!-- <%- include('./partials/footer.ejs') %> -->
