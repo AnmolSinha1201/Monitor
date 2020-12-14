@@ -18,7 +18,6 @@ export const attemptRegister = async(email, password) => {
         return undefined;
     
     const hash = await bcrypt.hash(password);
-    console.log(password);
     await executeQuery("INSERT INTO users (email, password) VALUES ($1, $2)", email, hash);
 
     return true;
