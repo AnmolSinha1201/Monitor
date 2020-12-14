@@ -65,7 +65,6 @@ export const getSummaryForAllFor7Days = async() => {
 	if (res && res.rowCount > 0)
     {
         const result = res.rowsOfObjects()[0];
-        console.log(result);
         if (result.userid != null) // Hack because we get rowCount = 1 even if nothing was found
             return beautify(result);
     }
@@ -79,7 +78,6 @@ export const getSummaryForAllForSpecificDay = async(date) => {
 	if (res && res.rowCount > 0)
     {
         const result = res.rowsOfObjects()[0];
-        console.log(result);
         if (result.userid != null) // Hack because we get rowCount = 1 even if nothing was found
             return beautify(result);
     }
