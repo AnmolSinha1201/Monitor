@@ -13,6 +13,10 @@
 					<form method="POST" action="/auth/logout">
 						<input type="submit" value="Logout" class="logoutButton">
 					</form>
+				<% } else { %>
+					<form method="GET" action="/auth/login">
+						<input type="submit" value="Login / Register" class="logoutButton">
+					</form>
 				<% } %>
 			</div>
 			<style>
